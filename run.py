@@ -20,4 +20,19 @@ def intro():
     print(f"Hello {name}. Welcome to your health tracker. Please enter your height and weight information to begin..")
     return name
 
+def get_data():
+    """
+    Get height and weight data from user to enable next actions
+    """
+    #User to enter figures for their height and weight values
+    height = int(input("\nEnter your height in CM: "))
+    weight = int(input("\nEnter your weight: "))
+            
+    #User to input either KG or LB to represent the unit of measurment for their weight
+    unit = input("Is that in kilograms or pounds? (KG/LB)\n").upper()
+
+    print(f"\nYour height is {height}CM and your current weight is {weight}{unit}.")
+    return height, weight, unit
+
 intro()
+get_data()
