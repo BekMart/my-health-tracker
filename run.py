@@ -146,6 +146,19 @@ def calculate_bmi(height, weight, unit):
     rounded_bmi = round(bmi, 1)
 
     print(f"\nYour BMI is {rounded_bmi}")
+
+    #The terminal will then print data relating to weight catagory
+    if rounded_bmi <= 18.4:
+        print("According to the NHS website you are considered underweight")
+    elif rounded_bmi <= 24.9:
+        print("According to the NHS website you are considered healthy")
+    elif rounded_bmi <= 29.9:
+        print("According to the NHS website you are considered overweight")
+    elif rounded_bmi > 30:
+        print("According to the NHS website you are considered obese")
+    else:
+        print("Sorry we do not recognise your response")
+        
     #Menu displayed after function called so user can make another selection
     display_main_menu(height, weight, unit)
     return rounded_bmi
