@@ -12,7 +12,12 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('MyHealthTracker')
 
-client1 = SHEET.worksheet("client1")
-data = client1.get_all_values()
+def intro():
+    """
+    Get name of user and introduce program
+    """
+    name = input("\nEnter your name: ").title()
+    print(f"Hello {name}. Welcome to your health tracker. Please enter your height and weight information to begin..")
+    return name
 
-print(data)
+intro()
