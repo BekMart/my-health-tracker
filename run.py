@@ -86,7 +86,7 @@ def display_main_menu(height, weight, unit):
     choice = input("Please pick an option 1-6: \n")
     #Depending on which choice the user makes a function will be called
     if choice == "1":
-        print("Convert Weight")
+        convert_weight(height, weight, unit)
     elif choice == "2":
         print("Calculate BMI")
     elif choice == "3":
@@ -103,6 +103,25 @@ def display_main_menu(height, weight, unit):
         #If user enters anything thatr isn't 1-6
         print("Ooops that wasn't an option. Try again..")
         display_main_menu(height, weight, unit)
+
+def convert_weight(height, weight, unit):
+    """
+    Converts weight between KG and LB
+    """
+    print("Convert weight (imperial/metric):")
+    #If unit was originally in KG then it'll convert to LB and print to terminal
+    if unit == "KG":
+        weight = round(weight, 1) * 2.205
+        unit = "LB"
+        print(f"\nYour weight is: {round(weight,1)}{unit}")
+    #If unit was originally in LB then it'll convert to KG and print to terminal    
+    elif unit == "LB":
+        weight = round(weight, 1) / 2.205
+        unit = "KG"
+        print(f"\nYour weight is: {round(weight,1)}{unit}")
+    #Menu displayed after function called so user can make another selection
+    display_main_menu(height, weight, unit)
+    return weight, unit  
 
 intro()
 get_data()
