@@ -83,6 +83,25 @@ def display_main_menu(height, weight, unit):
     print(display_optins)
     print("\n-------------------------------")
 
+    choice = input("Please pick an option 1-6: \n")
+    #Depending on which choice the user makes a function will be called
+    if choice == "1":
+        print("Convert Weight")
+    elif choice == "2":
+        print("Calculate BMI")
+    elif choice == "3":
+        print("Set Weight Goal")
+    elif choice == "4":
+        print("Record Data to Spreadsheet")
+    elif choice == "5":
+        print("Reload Program")
+    elif choice == "6": 
+        print("Exit Program")
+    else:
+        #If user enters anything thatr isn't 1-6
+        print("Ooops that wasn't an option. Try again..")
+        display_main_menu(height, weight, unit)
+
 intro()
 get_data()
 
