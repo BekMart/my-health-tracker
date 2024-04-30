@@ -90,7 +90,7 @@ def display_main_menu(height, weight, unit):
     elif choice == "2":
         calculate_bmi(height, weight, unit)
     elif choice == "3":
-        print("Set Weight Goal")
+        set_weight_goals(height, weight, unit)
     elif choice == "4":
         print("Record Data to Spreadsheet")
     elif choice == "5":
@@ -158,10 +158,54 @@ def calculate_bmi(height, weight, unit):
         print("According to the NHS website you are considered obese")
     else:
         print("Sorry we do not recognise your response")
-        
+
     #Menu displayed after function called so user can make another selection
     display_main_menu(height, weight, unit)
     return rounded_bmi
+
+def set_weight_goals(height, weight, unit):
+    """
+    Allows user to calculate how many LB they need to loose to meet their weight goal
+    """
+    print("Set weight goal:")
+    while True:
+        try:
+            #This is where user states their weight goal
+            goal_weight = float(input("\nWhat weight do you want to get to? "))
+            
+            goal_weight_unit = input("Is that in KG or LB? \n").upper()
+
+            #This is the calculation if both units of mesaurment are the same for weight and goal_weight
+            if goal_weight_unit == "KG" and unit == "KG":
+                surplus_weight = weight - goal_weight
+                print(f"You want to loose {round(surplus_weight, 1)}{goal_weight_unit}") 
+                break
+            #This is the calculation if both units of mesaurment are the same for weight and goal_weight
+            elif goal_weight_unit == "LB" and unit == "LB":
+                surplus_weight = weight - goal_weight
+                print(f"You want to loose {round(surplus_weight, 1)}{goal_weight_unit}") 
+                break
+            #This is the calculation if the units of mesaurment are different for weight and goal_weight
+            elif goal_weight_unit == "KG" and unit == "LB":
+                weight_kg = weight / 2.205
+                surplus_weight = weight_kg - goal_weight
+                print(f"You want to loose {round(surplus_weight, 1)}{goal_weight_unit}") 
+                break
+            #This is the calculation if the units of mesaurment are different for weight and goal_weight
+            elif goal_weight_unit == "LB" and unit == "KG":
+                weight_lb = weight * 2.205
+                surplus_weight = weight_lb - goal_weight
+                print(f"You want to loose {round(surplus_weight, 1)}{goal_weight_unit}")                     
+                break
+
+            else:
+                print("Please input either KG for kilograms or LB for pounds")
+        except ValueError:
+            print("This value must be a number")
+
+    #Menu displayed after function called so user can make another selection
+    display_main_menu(height, weight, unit)
+    return weight, unit
 
 intro()
 get_data()
