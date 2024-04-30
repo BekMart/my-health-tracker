@@ -24,10 +24,22 @@ def get_data():
     """
     Get height and weight data from user to enable next actions
     """
-    #User to enter figures for their height and weight values
-    height = int(input("\nEnter your height in CM: "))
-    weight = int(input("\nEnter your weight: "))
-            
+    #User to enter figures for their height in CM. If this is not an integer then it'll throw an error
+    while True:
+        try:
+            height = int(input("\nEnter your height in CM: "))
+            break
+        except ValueError:
+            print("You must input a whole number")
+
+    #User to enter figures for their weight. If this is not a number then it'll throw an error
+    while True:
+        try: 
+            weight = float(input("\nEnter your weight: "))
+            break
+        except ValueError:
+            print("You must input a number")
+     
     #User to input either KG or LB to represent the unit of measurment for their weight
     unit = input("Is that in kilograms or pounds? (KG/LB)\n").upper()
 
@@ -36,3 +48,4 @@ def get_data():
 
 intro()
 get_data()
+
