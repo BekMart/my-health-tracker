@@ -96,7 +96,9 @@ def display_main_menu(height, weight, unit):
     elif choice == "5":
         print("Reload Program")
     elif choice == "6": 
-        print("Exit Program")
+        #This will exit the program
+        print("Exiting program.. See you again soon!")
+        exit()
     else:
         #If user enters anything thatr isn't 1-6
         print("Ooops that wasn't an option. Try again..")
