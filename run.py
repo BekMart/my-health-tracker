@@ -1,3 +1,6 @@
+from datetime import datetime, timedelta
+import math
+
 import gspread
 from google.oauth2.service_account import Credentials
 
@@ -172,7 +175,7 @@ def set_weight_goals(height, weight, unit):
         try:
             #This is where user states their weight goal
             goal_weight = float(input("\nWhat weight do you want to get to? "))
-            
+
             goal_weight_unit = input("Is that in KG or LB? \n").upper()
 
             #This is the calculation if both units of mesaurment are the same for weight and goal_weight
@@ -203,9 +206,36 @@ def set_weight_goals(height, weight, unit):
         except ValueError:
             print("This value must be a number")
 
+    #This uses datetime to calculate todays date
+    the_date = datetime.now().date()
+
+    while True: 
+        try:
+            #This is where the user will input the date that they want to reach their goal weight
+            target_date = input("\nWhen do you want to reach your goal weight by? (YYYY-MM-DD) ")
+            # Convert target_date string to date object
+            target_date = datetime.strptime(target_date, "%Y-%m-%d").date()
+            break
+        #This error will appear if the date format is incorrect and prompt the user to re-enter
+        except ValueError:
+            print("Invalid target date format. Please use YYYY-MM-DD.")
+
+    #This calculates how many days between now and target_date
+    timeframe = target_date - the_date
+    #This calculates the amount of whole weeks this consists of
+    timeframe_weeks = math.floor(timeframe.days / 7)
+
+    #This calculates how many LB needs to be lost each week for the user to reach their target on time
+    goal = surplus_weight / timeframe_weeks
+    if goal_weight_unit == "KG":
+        goal = goal * 2.205
+
+    #Message to user with their results in a readable manner
+    print(f"\nIn order to reach {goal_weight}{goal_weight_unit} by {target_date}, you will need to lose {round(goal,1)} LB each week for {timeframe_weeks} weeks.")
+
     #Menu displayed after function called so user can make another selection
     display_main_menu(height, weight, unit)
-    return weight, unit
+    return weight, unit, goal   
 
 intro()
 get_data()
