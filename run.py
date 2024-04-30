@@ -15,6 +15,12 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('MyHealthTracker')
 
+#Global variables
+height = 0
+weight = 0
+unit = ""
+data = []
+
 def intro():
     """
     Get name of user and introduce program
@@ -60,7 +66,7 @@ def validate(height, weight, unit):
     #If user hasn't entered details correctly, they can re-enter
     elif confirm == "N":
         print("No problem, let's try again!")
-        get_data() 
+        height, weight, unit = get_data() 
     #If response isn't recognised a message will show and function will repeat
     else:
         print(f"{confirm} is not valid. Please try again.")
@@ -95,7 +101,7 @@ def display_main_menu(height, weight, unit):
     elif choice == "3":
         set_weight_goals(height, weight, unit)
     elif choice == "4":
-        print("Record Data to Spreadsheet")
+        update_health_spreadsheet(height, weight, unit, data)
     elif choice == "5":
         print("Reload Program")
     elif choice == "6": 
@@ -208,7 +214,7 @@ def set_weight_goals(height, weight, unit):
 
     #This uses datetime to calculate todays date
     the_date = datetime.now().date()
-
+    
     while True: 
         try:
             #This is where the user will input the date that they want to reach their goal weight
@@ -230,13 +236,33 @@ def set_weight_goals(height, weight, unit):
     if goal_weight_unit == "KG":
         goal = goal * 2.205
 
+    rounded_goal = round(goal,1)
+
     #Message to user with their results in a readable manner
-    print(f"\nIn order to reach {goal_weight}{goal_weight_unit} by {target_date}, you will need to lose {round(goal,1)} LB each week for {timeframe_weeks} weeks.")
+    print(f"\nIn order to reach {goal_weight}{goal_weight_unit} by {target_date}, you will need to lose {rounded_goal} LB each week for {timeframe_weeks} weeks.")
+
+    data = [the_date, height, weight, goal_weight, surplus_weight, target_date, rounded_goal, timeframe_weeks]
+    print(data)
+    
+    #Menu displayed after function called so user can make another selection
+    display_main_menu(height, weight, unit)
+    return data
+
+def update_health_spreadsheet(height, weight, unit, data):
+    """
+    Update spreadsheet with current data from user inputs
+    """
+    print("Updating spreadsheet")
+
+    health_spreadsheet = SHEET.worksheet("client1")
+    health_spreadsheet.append_row(data)
+
+    print(data)
 
     #Menu displayed after function called so user can make another selection
     display_main_menu(height, weight, unit)
-    return weight, unit, goal   
 
 intro()
-get_data()
+height, weight, unit = get_data()
+
 
