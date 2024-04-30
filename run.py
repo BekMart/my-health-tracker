@@ -53,7 +53,7 @@ def validate(height, weight, unit):
     confirm = input(f"\nYour height is {height}CM and your current weight is {weight}{unit}.\nIs that correct? (Y/N)").upper()
     if confirm == "Y":
         print("\nOk great! Now that we have your details, what would you like to do next?")
-        print("Main menu")
+        display_main_menu(height, weight, unit)  
     #If user hasn't entered details correctly, they can re-enter
     elif confirm == "N":
         print("No problem, let's try again!")
@@ -62,6 +62,26 @@ def validate(height, weight, unit):
     else:
         print(f"{confirm} is not valid. Please try again.")
         validate(height, weight, unit) 
+
+def display_main_menu(height, weight, unit):
+    """
+    Menu for user to choose what they want to do with this program
+    """
+    print("-------------------------------")
+    MENU_OPTIONS = {
+        "1" : "Convert weight (imperial/metric)",
+        "2" : "Calculate BMI",
+        "3" : "Set weight goal",
+        "4" : "Record your details",
+        "5" : "Reset program",
+        "6" : "Exit Program"
+    }
+    #Print menu to terminal as a dictionary with a prompt for user to make a selection
+    display_optins = print("MENU OPTIONS:\n")
+    for key, value in MENU_OPTIONS.items():
+        print(f"{key}. {value}")
+    print(display_optins)
+    print("\n-------------------------------")
 
 intro()
 get_data()
