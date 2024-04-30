@@ -88,7 +88,7 @@ def display_main_menu(height, weight, unit):
     if choice == "1":
         convert_weight(height, weight, unit)
     elif choice == "2":
-        print("Calculate BMI")
+        calculate_bmi(height, weight, unit)
     elif choice == "3":
         print("Set Weight Goal")
     elif choice == "4":
@@ -122,6 +122,33 @@ def convert_weight(height, weight, unit):
     #Menu displayed after function called so user can make another selection
     display_main_menu(height, weight, unit)
     return weight, unit  
+
+def calculate_bmi(height, weight, unit):
+    """
+    Calculate users BMI using the data they have already input
+    """
+    print("Calculate BMI:")
+
+    #Convert weight to kg and round to 1 decimal place to make calculation
+    if unit == "LB":
+        weight_kg = round(weight, 1) / 2.205
+    elif unit == "KG":
+        weight_kg = round(weight, 1)
+    
+    #Convert height to meters
+    height_m = height / 100
+    #Height squared
+    height_sq = height_m * height_m
+
+    #BMI = weight(kg) / height squared(m)
+    bmi = weight_kg / height_sq
+    #rounded to 1 decimal place
+    rounded_bmi = round(bmi, 1)
+
+    print(f"\nYour BMI is {rounded_bmi}")
+    #Menu displayed after function called so user can make another selection
+    display_main_menu(height, weight, unit)
+    return rounded_bmi
 
 intro()
 get_data()
