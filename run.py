@@ -34,6 +34,7 @@ def get_data():
                 #User to input either KG or LB to represent the unit of measurment for their weight
                 unit = input("Is that in kilograms or pounds? (KG/LB)\n").upper()
                 if unit == "KG" or unit == "LB":
+                    validate(height, weight, unit)
                     break
                 else:
                     #If user enters anything else, then they will be prompted to re-enter
@@ -42,9 +43,25 @@ def get_data():
                 print("You must input a number")
         except ValueError:
             print("You must input a whole number")
-
-    print(f"\nYour height is {height}CM and your current weight is {weight}{unit}.")
     return height, weight, unit
+
+def validate(height, weight, unit):
+    """
+    Check with user that details are correct before proceeding to main menu
+    """
+    #If user is happy that their detailsd are correct, proceed to main menu
+    confirm = input(f"\nYour height is {height}CM and your current weight is {weight}{unit}.\nIs that correct? (Y/N)").upper()
+    if confirm == "Y":
+        print("\nOk great! Now that we have your details, what would you like to do next?")
+        print("Main menu")
+    #If user hasn't entered details correctly, they can re-enter
+    elif confirm == "N":
+        print("No problem, let's try again!")
+        get_data() 
+    #If response isn't recognised a message will show and function will repeat
+    else:
+        print(f"{confirm} is not valid. Please try again.")
+        validate(height, weight, unit) 
 
 intro()
 get_data()
