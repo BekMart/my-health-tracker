@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, date
 import math
 
 import gspread
@@ -19,7 +19,7 @@ SHEET = GSPREAD_CLIENT.open('MyHealthTracker')
 height = 0
 weight = 0
 unit = ""
-data = []
+client_data = []
 
 def intro():
     """
@@ -76,6 +76,10 @@ def display_main_menu(height, weight, unit):
     """
     Menu for user to choose what they want to do with this program
     """
+    global client_data
+
+    if client_data is None:
+        client_data = []
     print("-------------------------------")
     MENU_OPTIONS = {
         "1" : "Convert weight (imperial/metric)",
@@ -99,9 +103,9 @@ def display_main_menu(height, weight, unit):
     elif choice == "2":
         calculate_bmi(height, weight, unit)
     elif choice == "3":
-        set_weight_goals(height, weight, unit)
+        client_data = set_weight_goals(height, weight, unit)
     elif choice == "4":
-        update_health_spreadsheet(height, weight, unit, data)
+        update_health_spreadsheet(height, weight, unit)
     elif choice == "5":
         print("Reload Program")
     elif choice == "6": 
@@ -176,6 +180,7 @@ def set_weight_goals(height, weight, unit):
     """
     Allows user to calculate how many LB they need to loose to meet their weight goal
     """
+    global client_data
     print("Set weight goal:")
     while True:
         try:
@@ -214,6 +219,8 @@ def set_weight_goals(height, weight, unit):
 
     #This uses datetime to calculate todays date
     the_date = datetime.now().date()
+    #This is the date as a string to convert to spreadsheet
+    date_str = str(the_date)
     
     while True: 
         try:
@@ -221,6 +228,8 @@ def set_weight_goals(height, weight, unit):
             target_date = input("\nWhen do you want to reach your goal weight by? (YYYY-MM-DD) ")
             # Convert target_date string to date object
             target_date = datetime.strptime(target_date, "%Y-%m-%d").date()
+            #This is the date as a string to convert to spreadsheet
+            target_date_str = str(target_date)
             break
         #This error will appear if the date format is incorrect and prompt the user to re-enter
         except ValueError:
@@ -241,28 +250,29 @@ def set_weight_goals(height, weight, unit):
     #Message to user with their results in a readable manner
     print(f"\nIn order to reach {goal_weight}{goal_weight_unit} by {target_date}, you will need to lose {rounded_goal} LB each week for {timeframe_weeks} weeks.")
 
-    data = [the_date, height, weight, goal_weight, surplus_weight, target_date, rounded_goal, timeframe_weeks]
-    print(data)
+    #Create variable of data to input into sprreadsheet
+    client_data = [date_str, height, weight, goal_weight, round(surplus_weight,1), target_date_str, rounded_goal, timeframe_weeks]
+    print(client_data)
     
     #Menu displayed after function called so user can make another selection
     display_main_menu(height, weight, unit)
-    return data
+    return client_data
 
-def update_health_spreadsheet(height, weight, unit, data):
+def update_health_spreadsheet(height, weight, unit):
     """
-    Update spreadsheet with current data from user inputs
+    Update spreadsheet with data from user inputs
     """
+    global client_data
     print("Updating spreadsheet")
 
+    #Input client_data into sprreadsheet
     health_spreadsheet = SHEET.worksheet("client1")
-    health_spreadsheet.append_row(data)
+    health_spreadsheet.append_row(client_data) 
 
-    print(data)
+    print(client_data)
 
     #Menu displayed after function called so user can make another selection
     display_main_menu(height, weight, unit)
 
 intro()
 height, weight, unit = get_data()
-
-
