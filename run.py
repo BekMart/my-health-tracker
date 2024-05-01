@@ -193,99 +193,76 @@ def calculate_bmi(height, weight, unit):
 
 def set_weight_goals(height, weight, unit):
     """
-    Allows user to calculate how many LB they need to loose to meet their weight goal
+    Allows user to calculate how many LB they need to lose to meet their weight goal
     """
     global client_data
     print("Set weight goal:")
+
     while True:
         try:
-            #This is where user states their weight goal
-            goal_weight = float(input("\nWhat weight do you want to get to? "))
+            # Call function to get goal_weight and goal_weight_unit values
+            goal_weight, goal_weight_unit = get_weight_and_unit("\nWhat weight do you want to get to?", "KG or LB")
 
-            goal_weight_unit = input("Is that in KG or LB? \n").upper()
+            # Converting weight to pounds to calculate surplus weight
+            weight_lb = weight * 2.205 if unit == "KG" else weight
+            goal_weight_lb = goal_weight * 2.205 if goal_weight_unit == "KG" else goal_weight
+            surplus_weight_lb = weight_lb - goal_weight_lb
 
-            #This is the calculation if both units of mesaurment are the same for weight and goal_weight
-            if goal_weight_unit == "KG" and unit == "KG":
-                surplus_weight = weight - goal_weight
-                print(f"You want to loose {round(surplus_weight, 1)}{goal_weight_unit}") 
-                break
-            #This is the calculation if both units of mesaurment are the same for weight and goal_weight
-            elif goal_weight_unit == "LB" and unit == "LB":
-                surplus_weight = weight - goal_weight
-                print(f"You want to loose {round(surplus_weight, 1)}{goal_weight_unit}") 
-                break
-            #This is the calculation if the units of mesaurment are different for weight and goal_weight
-            elif goal_weight_unit == "KG" and unit == "LB":
-                weight_kg = weight / 2.205
-                surplus_weight = weight_kg - goal_weight
-                print(f"You want to loose {round(surplus_weight, 1)}{goal_weight_unit}") 
-                break
-            #This is the calculation if the units of mesaurment are different for weight and goal_weight
-            elif goal_weight_unit == "LB" and unit == "KG":
-                weight_lb = weight * 2.205
-                surplus_weight = weight_lb - goal_weight
-                print(f"You want to loose {round(surplus_weight, 1)}{goal_weight_unit}")                     
-                break
-
-            else:
-                print(f"{goal_weight_unit} is an invalid response. Please input either KG for kilograms or LB for pounds")
-        except ValueError:
-            print("This value must be a number only")
-
-    #This uses datetime to calculate todays date
-    the_date = datetime.now().date()
-    #This is the date as a string to convert to spreadsheet
-    date_str = str(the_date)
-    
-    while True: 
-        try:
-            #This is where the user will input the date that they want to reach their goal weight
-            target_date = input("\nWhen do you want to reach your goal weight by? (YYYY-MM-DD) ")
-            # Convert target_date string to date object
-            target_date = datetime.strptime(target_date, "%Y-%m-%d").date()
-            #This is the date as a string to convert to spreadsheet
-            target_date_str = str(target_date)
+            # Message to user to inform them of surplus weight
+            print(f"You want to lose {round(surplus_weight_lb, 1)} LB")
             break
-        #This error will appear if the date format is incorrect and prompt the user to re-enter
+
+        # Print the specific error message if invalid value is entered
+        except ValueError as e:
+            print(e)  
+
+    # Use datetime to calculate todays date and convert into string to update spreadsheet
+    today = datetime.now().date()
+    date_str = today.strftime("%Y-%m-%d")
+
+    while True:
+        try:
+            # This is where user is to input the date they want to get to their goal weight by and this is converted to a string to update spreadsheet
+            target_date = datetime.strptime(input("\nWhen do you want to reach your goal weight by? (YYYY-MM-DD) "), "%Y-%m-%d").date()
+            target_date_str = target_date.strftime("%Y-%m-%d")
+            break
         except ValueError:
+            # Error message printed if invalid format is entered
             print("Invalid target date format. Please use YYYY-MM-DD.")
 
-    #This calculates how many days between now and target_date
-    timeframe = target_date - the_date
-    #This calculates the amount of whole weeks this consists of
+    # Calculate how many weeks between target_date and now
+    timeframe = target_date - today
     timeframe_weeks = math.floor(timeframe.days / 7)
 
-    #This calculates how many LB needs to be lost each week for the user to reach their target on time
-    goal = surplus_weight / timeframe_weeks
-    if goal_weight_unit == "KG":
-        goal = goal * 2.205
+    # This calculates how many pounds the user should lose each week to reach their goal
+    goal = surplus_weight_lb / timeframe_weeks
+    rounded_goal = round(goal, 1)
 
-    rounded_goal = round(goal,1)
-
-    #This ensures that weight is converted to LB so that the data in the spreadsheet is consistent
-    if unit == "KG":
-        weight_lb = weight * 2.205
-    elif unit == "LB":
-        weight_lb = round(weight,1)
-    
-    #This ensures that goal weight is converted to LB so that the data in the spreadsheet is consistent
-    if goal_weight_unit == "KG":
-        goal_weight_lb = goal_weight * 2.205
-    elif goal_weight_unit == "LB":
-        goal_weight_lb = round(goal_weight,1)
-
-      #This ensures that surplus weight is converted to LB so that the data in the spreadsheet is consistent
-    surplus_weight_lb = weight_lb - goal_weight_lb
-
-    #Message to user with their results in a readable manner
-    print(f"\nIn order to reach {goal_weight}{goal_weight_unit} by {target_date}, you will need to lose {rounded_goal} LB each week for {timeframe_weeks} weeks.")
-
-    #Create variable of data to input into sprreadsheet
+    # Compile client data (list comprehension)
     client_data = [date_str, height, round(weight_lb,1), round(goal_weight_lb,1), round(surplus_weight_lb,1), target_date_str, rounded_goal, timeframe_weeks]
+
+    # Display results to user in a readable sentance 
+    print(f"\nTo reach {goal_weight}{goal_weight_unit} by {target_date}, lose {rounded_goal} LB each week for {timeframe_weeks} weeks.")
     
     #Menu displayed after function called so user can make another selection
     display_main_menu(height, weight, unit)
+
+    # Return client_data so that this can be updated to spreadsheet
     return client_data
+
+def get_weight_and_unit(prompt, unit_message):
+    """
+    Prompts user for weight and unit, validates input, and returns both values.
+    """
+    while True:
+        try:
+            goal_weight = float(input(prompt + " "))
+            goal_weight_unit = input(f"Is that in {unit_message}? \n").upper()
+            if goal_weight_unit not in ("KG", "LB"):
+                raise ValueError(f"{goal_weight_unit} is an invalid response. Please input either KG or LB")
+            return goal_weight, goal_weight_unit
+        except ValueError as e:
+            print(e)  # Print the specific error message
 
 def update_health_spreadsheet(height, weight, unit):
     """
@@ -308,14 +285,13 @@ def update_health_spreadsheet(height, weight, unit):
     #This add the BMI value to the client_data list
     client_data.append(rounded_bmi)
 
-    print("Updating spreadsheet")
+    print("Updating spreadsheet..")
 
     #Input client_data into spreadsheet
     health_spreadsheet = SHEET.worksheet("client1")
     health_spreadsheet.append_row(client_data) 
 
-    print(client_data)
-    print("Spreadsheet updated successfully!")
+    print("\nThank you for your information. The spreadsheet has been updated successfully!")
 
     #Menu displayed after function called so user can make another selection
     display_main_menu(height, weight, unit)
