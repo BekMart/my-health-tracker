@@ -20,6 +20,7 @@ height = 0
 weight = 0
 unit = ""
 client_data = []
+rounded_bmi = 0
 
 def intro():
     """
@@ -85,9 +86,13 @@ def display_main_menu(height, weight, unit):
     Menu for user to choose what they want to do with this program
     """
     global client_data
-
     if client_data is None:
         client_data = []
+
+    global rounded_bmi
+    if rounded_bmi is None:
+        rounded_bmi = 0
+
     print("-------------------------------")
     MENU_OPTIONS = {
         "1" : "Convert weight (imperial/metric)",
@@ -115,7 +120,7 @@ def display_main_menu(height, weight, unit):
     elif choice == "4":
         update_health_spreadsheet(height, weight, unit)
     elif choice == "5":
-        reset_program(height, weight, unit, client_data)
+        reset_program(height, weight, unit, client_data, rounded_bmi)
     elif choice == "6": 
         #This will exit the program
         print("Exiting program.. See you again soon!")
@@ -148,6 +153,7 @@ def calculate_bmi(height, weight, unit):
     """
     Calculate users BMI using the data they have already input
     """
+    global rounded_bmi
     print("Calculate BMI:")
 
     #Convert weight to kg and round to 1 decimal place to make calculation
@@ -285,9 +291,14 @@ def update_health_spreadsheet(height, weight, unit):
     Update spreadsheet with data from user inputs
     """
     global client_data
+    global rounded_bmi
+
+    #This add the BMI value to the client_data list
+    client_data.append(rounded_bmi)
+
     print("Updating spreadsheet")
 
-    #Input client_data into sprreadsheet
+    #Input client_data into spreadsheet
     health_spreadsheet = SHEET.worksheet("client1")
     health_spreadsheet.append_row(client_data) 
 
@@ -297,17 +308,18 @@ def update_health_spreadsheet(height, weight, unit):
     #Menu displayed after function called so user can make another selection
     display_main_menu(height, weight, unit)
 
-def reset_program(height, weight, unit, client_data):
+def reset_program(height, weight, unit, client_data, rounded_bmi):
     """
     This will reset all the settings and restart the program
     """
     print("Restarting Program..")
     
     #Reset all of the data 
-    weight = 0
     height = 0
+    weight = 0
     unit = ""
     client_data = []
+    rounded_bmi = 0
 
     #Restart program
     intro()
