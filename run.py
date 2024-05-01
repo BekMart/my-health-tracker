@@ -275,7 +275,6 @@ def set_weight_goals(height, weight, unit):
 
     #Create variable of data to input into sprreadsheet
     client_data = [date_str, height, round(weight_lb,1), round(goal_weight_lb,1), round(surplus_weight_lb,1), target_date_str, rounded_goal, timeframe_weeks]
-    print(client_data)
     
     #Menu displayed after function called so user can make another selection
     display_main_menu(height, weight, unit)
@@ -293,6 +292,7 @@ def update_health_spreadsheet(height, weight, unit):
     health_spreadsheet.append_row(client_data) 
 
     print(client_data)
+    print("Spreadsheet updated successfully!")
 
     #Menu displayed after function called so user can make another selection
     display_main_menu(height, weight, unit)
