@@ -37,21 +37,29 @@ def get_data():
         try:
             #User to enter figures for their height in CM. If this is not an integer then it'll throw an error
             height = int(input("\nEnter your height in CM: "))
-            try: 
-                #User to enter figures for their weight. If this is not a number then it'll throw an error
-                weight = float(input("\nEnter your weight: "))
-                #User to input either KG or LB to represent the unit of measurment for their weight
-                unit = input("Is that in kilograms or pounds? (KG/LB)\n").upper()
-                if unit == "KG" or unit == "LB":
-                    validate(height, weight, unit)
-                    break
-                else:
-                    #If user enters anything else, then they will be prompted to re-enter
-                    print("Please input either KG for kilograms or LB for pounds")
-            except ValueError:
-                print("You must input a number")
+            break
         except ValueError:
-            print("You must input a whole number")
+            print("You must input a whole number only")
+            continue  # Continue the loop to prompt for height again
+
+    while True:
+        try: 
+            #User to enter figures for their weight. If this is not a number then it'll throw an error
+            weight = float(input("\nEnter your weight: "))
+            break
+        except ValueError:
+            print("You must input a number only")
+            continue  # Continue the loop to prompt for weight again
+
+    while True:
+        #User to input either KG or LB to represent the unit of measurment for their weight
+        unit = input("Is that in kilograms or pounds? (KG/LB)\n").upper()
+        if unit == "KG" or unit == "LB":
+            validate(height, weight, unit)
+        else:
+            #If user enters anything else, then they will be prompted to re-enter
+            print(f"{unit} is an invalid response. Please input either KG for kilograms or LB for pounds\n")
+            
     return height, weight, unit
 
 def validate(height, weight, unit):
