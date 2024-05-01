@@ -85,6 +85,7 @@ def display_main_menu(height, weight, unit):
     """
     Menu for user to choose what they want to do with this program
     """
+    #This makes the following variables global so they can be used in various functions and there values can be reset
     global client_data
     if client_data is None:
         client_data = []
@@ -120,7 +121,7 @@ def display_main_menu(height, weight, unit):
     elif choice == "4":
         update_health_spreadsheet(height, weight, unit)
     elif choice == "5":
-        reset_program(height, weight, unit, client_data, rounded_bmi)
+        reset_program(height, weight, unit)
     elif choice == "6": 
         #This will exit the program
         print("Exiting program.. See you again soon!")
@@ -290,8 +291,19 @@ def update_health_spreadsheet(height, weight, unit):
     """
     Update spreadsheet with data from user inputs
     """
+    #Use the following global variables within this function
     global client_data
     global rounded_bmi
+
+    #If user hasn't set weight goals, then they will be redirected to the function to do this
+    if client_data == []:
+        print("You need to set weight goals first..")
+        client_data = set_weight_goals(height, weight, unit)
+    
+    #If user hasn't calculated BMI, then they will be directed to the correct function
+    if rounded_bmi == 0:
+        print("You need to calculate your BMI first..")
+        calculate_bmi(height, weight, unit)
 
     #This add the BMI value to the client_data list
     client_data.append(rounded_bmi)
@@ -308,10 +320,14 @@ def update_health_spreadsheet(height, weight, unit):
     #Menu displayed after function called so user can make another selection
     display_main_menu(height, weight, unit)
 
-def reset_program(height, weight, unit, client_data, rounded_bmi):
+def reset_program(height, weight, unit):
     """
     This will reset all the settings and restart the program
     """
+    #Use the following global variables within this function
+    global client_data
+    global rounded_bmi
+
     print("Restarting Program..")
     
     #Reset all of the data 
@@ -324,6 +340,9 @@ def reset_program(height, weight, unit, client_data, rounded_bmi):
     #Restart program
     intro()
     height, weight, unit = get_data()
+
+    #Retrun reset values of the following variables 
+    return height, weight, unit, client_data, rounded_bmi
 
 intro()
 height, weight, unit = get_data()
