@@ -247,11 +247,26 @@ def set_weight_goals(height, weight, unit):
 
     rounded_goal = round(goal,1)
 
+    #This ensures that weight is converted to LB so that the data in the spreadsheet is consistent
+    if unit == "KG":
+        weight_lb = weight * 2.205
+    elif unit == "LB":
+        weight_lb = round(weight,1)
+    
+    #This ensures that goal weight is converted to LB so that the data in the spreadsheet is consistent
+    if goal_weight_unit == "KG":
+        goal_weight_lb = goal_weight * 2.205
+    elif goal_weight_unit == "LB":
+        goal_weight_lb = round(goal_weight,1)
+
+      #This ensures that surplus weight is converted to LB so that the data in the spreadsheet is consistent
+    surplus_weight_lb = weight_lb - goal_weight_lb
+
     #Message to user with their results in a readable manner
     print(f"\nIn order to reach {goal_weight}{goal_weight_unit} by {target_date}, you will need to lose {rounded_goal} LB each week for {timeframe_weeks} weeks.")
 
     #Create variable of data to input into sprreadsheet
-    client_data = [date_str, height, weight, goal_weight, round(surplus_weight,1), target_date_str, rounded_goal, timeframe_weeks]
+    client_data = [date_str, height, round(weight_lb,1), round(goal_weight_lb,1), round(surplus_weight_lb,1), target_date_str, rounded_goal, timeframe_weeks]
     print(client_data)
     
     #Menu displayed after function called so user can make another selection
