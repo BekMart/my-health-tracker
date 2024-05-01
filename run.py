@@ -221,9 +221,9 @@ def set_weight_goals(height, weight, unit):
                 break
 
             else:
-                print("Please input either KG for kilograms or LB for pounds")
+                print(f"{goal_weight_unit} is an invalid response. Please input either KG for kilograms or LB for pounds")
         except ValueError:
-            print("This value must be a number")
+            print("This value must be a number only")
 
     #This uses datetime to calculate todays date
     the_date = datetime.now().date()
