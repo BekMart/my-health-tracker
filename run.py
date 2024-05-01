@@ -107,7 +107,7 @@ def display_main_menu(height, weight, unit):
     elif choice == "4":
         update_health_spreadsheet(height, weight, unit)
     elif choice == "5":
-        print("Reload Program")
+        reset_program(height, weight, unit, client_data)
     elif choice == "6": 
         #This will exit the program
         print("Exiting program.. See you again soon!")
@@ -288,6 +288,22 @@ def update_health_spreadsheet(height, weight, unit):
 
     #Menu displayed after function called so user can make another selection
     display_main_menu(height, weight, unit)
+
+def reset_program(height, weight, unit, client_data):
+    """
+    This will reset all the settings and restart the program
+    """
+    print("Restarting Program..")
+    
+    #Reset all of the data 
+    weight = 0
+    height = 0
+    unit = ""
+    client_data = []
+
+    #Restart program
+    intro()
+    height, weight, unit = get_data()
 
 intro()
 height, weight, unit = get_data()
