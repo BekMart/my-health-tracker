@@ -146,9 +146,13 @@ def display_main_menu(height, weight, unit):
 
 
 def return_to_menu(height, weight, unit):
+    """
+    Called at the end of each option to get user to enter a key
+    which will return them to main menu
+    """
     while True:
         user_input = input("Press any key to return to menu: \n")
-        # Check if input is not empty (user pressed a key)
+        # Check if anything in input/or just enter pressed
         if user_input or user_input == "":
             # Menu displayed so user can make another selection
             display_main_menu(height, weight, unit)
@@ -260,12 +264,21 @@ def set_weight_goals(height, weight, unit):
             print("\nWhen do you want to reach your goal weight by?")
             target_date_str = input("(YYYY-MM-DD)\n")
             target_date = datetime.strptime(target_date_str, "%Y-%m-%d").date()
+
+            # Check if target date is in the past (before today)
+            if target_date < today:
+                raise ValueError("PastDateError")  # Exception for past date
+
             # This is converted to a string to update the spreadsheet
             target_date_str = target_date.strftime("%Y-%m-%d")
             break
-        except ValueError:
-            # Error message printed if invalid format is entered
-            print("Invalid target date format. Please use YYYY-MM-DD.")
+
+        except ValueError as e:
+            # Handle specific errors
+            if str(e) == "PastDateError":
+                print("Date can't be in the past. Please enter a future date.")
+            else:
+                print("Invalid target date format. Please use YYYY-MM-DD.")
 
     # Calculate how many weeks between target_date and now
     timeframe = target_date - today
