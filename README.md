@@ -71,3 +71,20 @@ This project is for educational purposes. The main aim is to build a functional 
 - I want to keep track of my health in an easy to read format to measure progress
 - I want a system that is easy to update and maintain
 - I want to be able to access on any device
+
+<h1 id="structure">Structure</h1>
+
+## Process Flow Chart 
+
+![This is a flow chart demonstrating the structure of this website and the process to navigate around it]()
+
+- The client initially inputs their basic height and weight information
+- The user is then presented with a menu to choose what they would like to do next
+- After each action the user is prompted to press a key to return to the menu and make another choice
+- The program is designed to provide lots of feedback to assist the user in navigating around the site and createing a better user experience
+
+## Spreadsheet
+
+![This image shows the spreadhseet where all of the data that the user inputs is stored and tracked]()
+
+- The program is linked to a spreadsheet so if the user wishes to record any of the information, they can select an option from the menu and it'll be recorded here
