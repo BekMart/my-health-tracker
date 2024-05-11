@@ -75,9 +75,9 @@ def validate(height, weight, unit):
     """
     Check with user that details are correct before proceeding to main menu
     """
-    # If user is happy that their detailsd are correct, proceed to main menu
+    # If user is happy that their details are correct, proceed to main menu
     print(f"\nYour height is {height}CM and your weight is {weight}{unit}.")
-    confirm = input("Is that correct? (Y/N)").upper()
+    confirm = input("\nIs that correct? (Y/N)").upper()
     if confirm == "Y":
         print("\nOk great! Now that we have your details,")
         print("what would you like to do next?")
@@ -106,7 +106,7 @@ def display_main_menu(height, weight, unit):
     if rounded_bmi is None:
         rounded_bmi = 0
 
-    print("-------------------------------")
+    print("-" * 30)
     MENU_OPTIONS = {
         "1": "Convert weight (imperial/metric)",
         "2": "Calculate BMI",
@@ -115,14 +115,14 @@ def display_main_menu(height, weight, unit):
         "5": "Reset program",
         "6": "Exit Program"
     }
-    # Print menu to terminal as dictionary and prompt user to make a selection
-    display_optins = print("MENU OPTIONS:\n")
+
+    # Print menu options as dictionary and promt user to make a selection
+    print("MENU OPTIONS:\n")
     for key, value in MENU_OPTIONS.items():
         print(f"{key}. {value}")
-    print(display_optins)
-    print("\n-------------------------------")
+    print("-" * 30)
 
-    choice = input("Please pick an option 1-6: \n")
+    choice = input("\nPlease pick an option 1-6: ")
     # Depending on which choice the user makes a function will be called
     if choice == "1":
         convert_weight(height, weight, unit)
