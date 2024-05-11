@@ -227,6 +227,8 @@ def set_weight_goals(height, weight, unit):
     Calculates how many LB the user needs to lose to meet their weight goal
     """
     global client_data
+    # So we can access this variable later in the function
+    weight_to_gain = 0
     print("Set weight goal:")
 
     while True:
@@ -289,25 +291,29 @@ def set_weight_goals(height, weight, unit):
 
     # Calculate how many weeks between target_date and now
     timeframe = target_date - today
-    timeframe_weeks = math.floor(timeframe.days / 7)
+    time_weeks = math.floor(timeframe.days / 7)
 
     # Calculates how many LB the user should lose each week to reach their goal
-    goal = surplus_weight_lb / timeframe_weeks
+    goal = surplus_weight_lb / time_weeks
     rounded_goal = round(goal, 1)
+
+    # Calculates how many LB the user should gain each week to reach their goal
+    gain = weight_to_gain / time_weeks
+    rounded_gain = round(gain, 1)
 
     # Compile client data
     client_data = [
         date_str, height, round(weight_lb, 1),
         round(goal_weight_lb, 1), round(surplus_weight_lb, 1),
-        target_date_str, rounded_goal, timeframe_weeks
+        target_date_str, rounded_goal, time_weeks
         ]
 
     # Display results to user in a readable sentance
     print(f"\nTo reach {goal_weight}{goal_weight_unit} by {target_date},")
     if surplus_weight_lb >= 0:
-        print(f"lose {rounded_goal}LB each week for {timeframe_weeks} weeks.")
+        print(f"lose {rounded_goal}LB each week for {time_weeks} weeks.")
     else:
-        print(f"gain {weight_to_gain}LB each week for{timeframe_weeks} weeks.")
+        print(f"gain {rounded_gain}LB each week for {time_weeks} weeks.")
     print("-" * 30)
 
     return_to_menu(height, weight, unit)
