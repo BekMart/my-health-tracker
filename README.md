@@ -49,6 +49,25 @@ This project is for educational purposes. The main aim is to build a functional 
 ### Returning Users
 
 - Somewhere familiar and easy to use
-- User can record their heallth journey in one place and keep track of progress
+- User can record their health journey in one place and keep track of progress
 - BMI is calculated on each visit 
 - Accurate information provided
+
+<h2 id="user-stories">User Stories</h2>
+
+### As a web designer...
+
+- I want to create an easy to use program with clear feedback to users 
+- I want to ensure that all functions work correctly and are responsive at all times
+- All calculatins must be accurate
+
+### As a new user...
+
+- I want to easily be able to use the program and all of its functions
+- I want to be given accurate information
+
+### As a returning customer...
+
+- I want to keep track of my health in an easy to read format to measure progress
+- I want a system that is easy to update and maintain
+- I want to be able to access on any device
