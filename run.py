@@ -245,9 +245,16 @@ def set_weight_goals(height, weight, unit):
                 )
             surplus_weight_lb = weight_lb - goal_weight_lb
 
-            # Message to user to inform them of surplus weight
-            print(f"You want to lose {round(surplus_weight_lb, 1)} LB")
-            break
+            # Message displays how much to lose (if surplus weight >= 0)
+            if surplus_weight_lb >= 0:
+                print(f"You want to lose {round(surplus_weight_lb, 1)} LB")
+                break
+            else:
+                # Message displays how much to gain (if surplus weight < 0)
+                # Convert surplus weight to positive for weight gain
+                weight_to_gain = round(abs(surplus_weight_lb), 1)
+                print(f"You want to gain {weight_to_gain} LB")
+                break
 
         # Print the specific error message if invalid value is entered
         except ValueError as e:
@@ -297,7 +304,10 @@ def set_weight_goals(height, weight, unit):
 
     # Display results to user in a readable sentance
     print(f"\nTo reach {goal_weight}{goal_weight_unit} by {target_date},")
-    print(f"lose {rounded_goal} LB each week for {timeframe_weeks} weeks.")
+    if surplus_weight_lb >= 0:
+        print(f"lose {rounded_goal}LB each week for {timeframe_weeks} weeks.")
+    else:
+        print(f"gain {weight_to_gain}LB each week for{timeframe_weeks} weeks.")
     print("-" * 30)
 
     return_to_menu(height, weight, unit)
