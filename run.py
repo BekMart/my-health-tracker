@@ -137,11 +137,22 @@ def display_main_menu(height, weight, unit):
     elif choice == "6":
         # This will exit the program
         print("Exiting program.. See you again soon!")
+        print("-" * 30)
         exit()
     else:
         # If user enters anything thatr isn't 1-6
         print("Ooops that wasn't an option. Try again..")
         display_main_menu(height, weight, unit)
+
+
+def return_to_menu(height, weight, unit):
+    while True:
+        user_input = input("Press any key to return to menu: \n")
+        # Check if input is not empty (user pressed a key)
+        if user_input or user_input == "":
+            # Menu displayed so user can make another selection
+            display_main_menu(height, weight, unit)
+            break  # Exit the loop if user presses a key
 
 
 def convert_weight(height, weight, unit):
@@ -159,8 +170,9 @@ def convert_weight(height, weight, unit):
         weight = round(weight, 1) / 2.205
         unit = "KG"
         print(f"\nYour weight is: {round(weight,1)}{unit}")
-    # Menu displayed after function called so user can make another selection
-    display_main_menu(height, weight, unit)
+    print("-" * 30)
+
+    return_to_menu(height, weight, unit)
     return weight, unit
 
 
@@ -200,9 +212,9 @@ def calculate_bmi(height, weight, unit):
         print("According to the NHS website you are considered obese")
     else:
         print("Sorry we do not recognise your response")
+    print("-" * 30)
 
-    # Menu displayed after function called so user can make another selection
-    display_main_menu(height, weight, unit)
+    return_to_menu(height, weight, unit)
     return rounded_bmi
 
 
@@ -273,9 +285,9 @@ def set_weight_goals(height, weight, unit):
     # Display results to user in a readable sentance
     print(f"\nTo reach {goal_weight}{goal_weight_unit} by {target_date},")
     print(f"lose {rounded_goal} LB each week for {timeframe_weeks} weeks.")
+    print("-" * 30)
 
-    # Menu displayed after function called so user can make another selection
-    display_main_menu(height, weight, unit)
+    return_to_menu(height, weight, unit)
 
     # Return client_data so that this can be updated to spreadsheet
     return client_data
@@ -327,9 +339,9 @@ def update_health_spreadsheet(height, weight, unit):
 
     print("\nThank you for your information.")
     print("The spreadsheet has been updated successfully!")
+    print("-" * 30)
 
-    # Menu displayed after function called so user can make another selection
-    display_main_menu(height, weight, unit)
+    return_to_menu(height, weight, unit)
 
 
 def reset_program(height, weight, unit):
