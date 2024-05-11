@@ -1,32 +1,30 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# My Health Tracker
 
-Welcome,
+## Python Project
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **March 14, 2023**
+This website has been designed and built to give users a place to record and track their weight as well as check their BMI and set goals to lose or gain weight over set periods of time.
 
-## Reminders
+This project is for educational purposes. The main aim is to build a functional and responsive website using Python.
 
-- Your code must be placed in the `run.py` file
-- Your dependencies must be placed in the `requirements.txt` file
-- Do not edit any of the other files or your code may not deploy properly
+## [Live Link To Program here.](https://my-health-tracker-92b52c6743f2.herokuapp.com/)
 
-## Creating the Heroku app
+<h1 id="contents">Table of Contents</h1>
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
-
-1. `heroku/python`
-2. `heroku/nodejs`
-
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
-
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
-
-Connect your GitHub repository and deploy as normal.
-
-## Constraints
-
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
-
----
-
-Happy coding!
+- [UX](#UX)
+    - [Website Owner Business Goals](#website-owner-goals) 
+    - [User Goals](#user-goals)
+    - [User Stories](#user-stories)
+    - [Structure](#structure)
+    - [Surface](#surface)
+- [Features](#features)
+    - [Features Left To Implement](#features-to-implement)
+- [Technology Used](#technology-used)
+- [Testing](#testing)
+    - [Functionality Testing](#functionality)
+    - [Compatibility Testing](#compatibility)
+    - [User Stories Testing](#story-testing)
+    - [Issues Found](#issues)
+    - [Performance Testing](#performance)
+    - [Code Validation](#validation)
+- [Deployment](#deployment)
+- [Credits](#credits)
