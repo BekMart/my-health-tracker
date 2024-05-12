@@ -226,4 +226,19 @@ Below is a table to show all of the functions of the program, their expected out
 | Restart program | All obtained data cleared and the program is restarted from the begining | Pass |
 | Exit Program | Program closed | Pass |
 
+The above has all been tested manually via VS code and 
+Python shell.
 
+<h2 id="compatibility">Compatibility Testing</h2>
+
+This program has been tested in Chrome, Firefox and Safari web browsers:
+- There were no issues found when the program was run on either Chrome or Firefox.
+- In Safari, the program loaded but no other actions were possible making me think that some of the software is not compatible with this browser. 
+
+I tested the website on the following hardware devices:
+- MacBook Pro
+    - This works fine, with no issues.
+- Galaxy S20
+    - The program loads, however, when I enter any input, it displays all of the inputs concatenated when a new one is entered.
+- iPhone 13
+    - The program loads but no other actions are possible.
