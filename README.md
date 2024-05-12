@@ -276,3 +276,23 @@ I tested the website on the following hardware devices:
     - If they haven't input any weight goals or checked their BMI, they will be re-directed to these options automatically before being able to record their data, as this is also to be recorded. 
 - I want to be able to access on any device
     - It seems that this program is not well suited to being on mobile devices. 
+
+<h2 id="issues">Issues Found</h2>
+
+### Solved Bugs
+
+- When I first created the main menu, another line was added displaying 'None' after the last option within the dictionary. 
+    - This was because I originally created the MENU_OPTIONS variable, which contained the menu content, but also created a variable named display_options to print the MENU_OPTIONS and called both of these. 
+    - Since print doesn't return anything, the variable display_options was assigned 'None', which is why it was displayed at the end of the menu.
+    - To rectify this, I erased the display options variable all together and just printed the MENU_OPTIONS.
+
+- When a user inputs data in the get_data function, if something was entered in the wrong format, it would tell the user but the while loop would return them to the begining of the whole function opposed to repeating the current question. 
+    - I had originally nested the try statments within the function which was within a while loop. 
+    - I separated the function into three while loops so that each input section is dealt with separately and if the input isnt it the correct format, feedback will be given to the user and they will be retruned to the question that they were on, rather than starting at the begining of the function each time. 
+
+- When the user choses the option to set weight goals, a variable named client_data is created. This variable holds all of the data which we want to transfer to the google spreadsheet in order to record and track their health information. I was finding that the values that were obtained from this function were not updating in the variable globally. 
+    - This issue was resolved by making client_data a global variable, which I declared in each function that it was associated with and returned the value of it when I need its value to be updated. (In set_weight_goals and rest_program functions)
+
+### Unsolved bugs
+
+- I want the program to work on all devices including mobile, however, in many of my tests it seemed that the program wasn't compatible with many of the devices or software. 
