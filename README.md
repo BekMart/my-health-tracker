@@ -242,3 +242,37 @@ I tested the website on the following hardware devices:
     - The program loads, however, when I enter any input, it displays all of the inputs concatenated when a new one is entered.
 - iPhone 13
     - The program loads but no other actions are possible.
+
+<h2 id="story-testing">User Stories Testing</h2>
+
+### As a web designer...
+
+- I want to create an easy to use program with clear feedback to users
+    - At each step of this program, there is feedback which tells the user:
+        - What to expect/what to do next
+        - If they have entered any details incorrectly, feedback will explain why and prompt them to re-enter correctly.
+- I want to ensure that all functions work correctly and are responsive at all times
+    - Tests have been carried out on all functions within the program and they work as intended.
+- All calculatins must be accurate
+    - All calculations have been tested and are accurate, they have been rounded to a single decimal place. 
+    - Calculations include:
+        - Converting between metric to imperial
+        - BMI calculations
+        - Calculations which relay how much weight people need to lose/gain over what period of time to reach their goals
+
+### As a new user...
+
+- I want to easily be able to use the program and all of its functions
+    - This is achieved by the feedback being very clear and informative throughout.
+- I want to be given accurate information
+    - All the information which is output has been tested for accuracy.
+
+### As a returning customer...
+
+- I want to keep track of my health in an easy to read format to measure progress
+    - The user is able to update their data after each use to a spreadsheet, where they can see their progress over time.
+- I want a system that is easy to update and maintain
+    - It is a simple system where the user just needs to enter their current height and weight details and then select the menu option to record data.
+    - If they haven't input any weight goals or checked their BMI, they will be re-directed to these options automatically before being able to record their data, as this is also to be recorded. 
+- I want to be able to access on any device
+    - It seems that this program is not well suited to being on mobile devices. 
