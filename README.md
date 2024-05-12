@@ -97,6 +97,72 @@ The layout is clear and consistant throughout the program to ensure a profession
 
 [Back to Contents](#contents)
 
+<h1 id="features">Features</h1>
 
+This program consists of one page which has bas been deployed through Heroku. The program is linked to Google Sheets which allows users to record data from the prpogram using an API.
 
+The program consists of the following features:
+
+### Welcome
+
+- When the program starts, the user is prompted to input their name and there is a welcome message to introduce them to the program. 
+
+### Data Input
+
+- The user is then prompted to input their height and weight information. 
+- If the details are input in the incorrect format then an error message appears to clearly state why and the input fiels will reappear to enable the user to try again. 
+
+### Validation 
+
+- Before proceeding to the main menu, there is feedback for the user to confirm that all the details entered are correct. 
+- If not, they will be directed back to the begining to re-enter the correct data. 
+
+### Main Menu
+
+- The main menu has a border and title. 
+- It consists of 6 options which are clearly labelled by numbers.
+- There is a prompt after the menu for the user to make a selection between 1-6.
+- Feedback is given if an invalid selection is made. 
+
+### Convert Weight
+
+- This function does a calculation to change the mesaurement from kilograms to pounds or vice versa.
+- Feedback is given to the user to inform them of the alternative measurement. 
+
+### Calculate BMI
+
+- In order to perform this caluclation, the measurement must be converted to kilograms. 
+- The calculation is then completed using the initial data that the user has input.
+- Feedback is given to the user stating what their calculated BMI is.
+- There is also feedback to inform user of what their BMI catagory is based on information from the NHS website. 
+
+### Set Weight Goals
+
+- The user will be asked what their target goal weight is.
+- The surplus weight will be converted to pounds.
+- Feedback will be given to user to inform them of the weight difference. If this is negative then feedback will be how much weight to gain and if positive then how much to lose. 
+- The user will then be prompted the input the date by which they would like to reach this goal. 
+- Feedback will be given if this date is in the past or is not input in the correct format. 
+- Once we have all this information, a calculation will be made and feedback will be given in a readable sentance to tell users, how much weight they would need to lose/gain each week in order to reach their weight goals. 
+
+### Record Details
+
+- There is an option for users to record their data onto a Google Sheets page.
+- The data recorded is the current date, height and weight, goal weight, total weight lose target in pounds, target date, how many pounds the user needs to lose per week, number of weeks and their calculated BMI.
+- If the data has yet to be calculated then the user will be redirected to the correct menu option to obtain the data first.
+- If we have all the necessary details, the data will be pulled across and update the spreadsheet accordingly. 
+- Feedback is given to let the user know that the spreadsheet has been updated successfully. 
+
+### Return to Menu
+
+- After making a menu selection and the action is complete, there is a message for the user to press any key in order to return to the main menu.
+
+### Reset Program
+
+- This clears all of the data that has been obtained and restarts the program from the begining.
+
+### Exit Program
+
+- This option closes the program.
+- Feedback is given to tell the user that this has been done. 
 
