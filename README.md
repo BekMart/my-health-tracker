@@ -170,3 +170,37 @@ The program consists of the following features:
 
 - I would like to have had different tabs within the Google spreadsheet so that if different users enter their details, it would filter to seperate tabs within the spreadsheet. 
 - I could also add an option where the program calculates a users healthy BMI and information on how to best reach that in a safe and healthy manner. 
+
+[Back to Contents](#contents)
+
+<h1 id="technology-used">Technology Used</h1>
+
+### Python
+
+- Python is the language used to create the entire program.
+
+### Git Pod
+
+- This is the development hosting platform which was used to create the website.
+
+### GitHub
+
+- This is the software hosting platform which was used to keep the project in a remote location.
+
+### Heroku
+
+- The platform used to deploy the website online.
+
+### Google Sheets
+
+- Used to record data that is obtained from the program.
+
+### Google API
+
+- Used to link the program to the Google spreadsheet.
+
+### Google Gemini
+
+- AI used to assist me in debugging elements in my code.
+
+[Back to Contents](#contents)
