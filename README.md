@@ -166,3 +166,7 @@ The program consists of the following features:
 - This option closes the program.
 - Feedback is given to tell the user that this has been done. 
 
+<h2 id="features-to-implement">Features Left To Implement</h2>
+
+- I would like to have had different tabs within the Google spreadsheet so that if different users enter their details, it would filter to seperate tabs within the spreadsheet. 
+- I could also add an option where the program calculates a users healthy BMI and information on how to best reach that in a safe and healthy manner. 
