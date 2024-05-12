@@ -88,3 +88,15 @@ This project is for educational purposes. The main aim is to build a functional 
 ![This image shows the spreadhseet where all of the data that the user inputs is stored and tracked]()
 
 - The program is linked to a spreadsheet so if the user wishes to record any of the information, they can select an option from the menu and it'll be recorded here
+
+<h1 id="surface">Surface</h1>
+
+The layout is clear and consistant throughout the program to ensure a professional feel. 
+- There is consistent spacing throughout the program and the menu is bordered by lines at the top and underneath. 
+- Clear and immediate feedback is given to the user to ensure that they know how to use the program and if anything is input incorrectly, they are informed why and prompted to correct.  
+
+[Back to Contents](#contents)
+
+
+
+
