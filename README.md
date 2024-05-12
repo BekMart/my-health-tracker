@@ -76,7 +76,7 @@ This project is for educational purposes. The main aim is to build a functional 
 
 ## Process Flow Chart 
 
-![This is a flow chart demonstrating the structure of this website and the process to navigate around it]()
+![This is a flow chart demonstrating the structure of this website and the process to navigate around it][flow-chart]
 
 - The client initially inputs their basic height and weight information
 - The user is then presented with a menu to choose what they would like to do next
@@ -85,7 +85,7 @@ This project is for educational purposes. The main aim is to build a functional 
 
 ## Spreadsheet
 
-![This image shows the spreadhseet where all of the data that the user inputs is stored and tracked]()
+![This image shows the spreadhseet where all of the data that the user inputs is stored and tracked][spreadsheet]
 
 - The program is linked to a spreadsheet so if the user wishes to record any of the information, they can select an option from the menu and it'll be recorded here
 
@@ -296,3 +296,18 @@ I tested the website on the following hardware devices:
 ### Unsolved bugs
 
 - I want the program to work on all devices including mobile, however, in many of my tests it seemed that the program wasn't compatible with many of the devices or software. 
+
+<h2 id="performance">Performance Testing</h2>
+
+### Lighthouse
+
+- I completed an audit through Chrome Devtools using the Lighthouse program. 
+- The performance value sometimes varies.
+- The results were as follows when last checked:
+
+![Image of lighthouse results showing Performance at 85,Accessability at 94, Best Practice at 96, SEO at 89][lighthouse]
+
+
+[flow-chart]: assets/process-flow-chart.png
+[spreadsheet]: assets/spreadsheet.png
+[lighthouse]: assets/lighthouse.png
