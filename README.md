@@ -307,7 +307,19 @@ I tested the website on the following hardware devices:
 
 ![Image of lighthouse results showing Performance at 85,Accessability at 94, Best Practice at 96, SEO at 89][lighthouse]
 
+<h2 id="validation">Code Validation</h2>
+
+### Python
+
+I used [CI Python Linter](https://pep8ci.herokuapp.com/) to validate my Python code. 
+- I had some E501 errors where my code was too long so I reduced these to fit within the guidlines.
+- I also saw some E231 errors because there was unnecessary whitespace present within my code. 
+- All of the errors were rectified and now the code is all valid. 
+
+![This image shows the code passing through validator, shoowing no errors][validator]
+
 
 [flow-chart]: assets/process-flow-chart.png
 [spreadsheet]: assets/spreadsheet.png
 [lighthouse]: assets/lighthouse.png
+[validator]: assets/validator.png
