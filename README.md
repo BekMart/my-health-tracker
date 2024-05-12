@@ -204,3 +204,26 @@ The program consists of the following features:
 - AI used to assist me in debugging elements in my code.
 
 [Back to Contents](#contents)
+
+<h1 id="testing">Testing</h1>
+
+<h2 id="functionality">Functionality Testing</h2>
+
+Below is a table to show all of the functions of the program, their expected outcomes and whether or not they work as intended.
+
+| Action | Expected Result | Result |
+| --- | --- | ---|
+| Run program | Program launches successfully | Pass |
+| Input data | Client inputs data and this is stored in global variables | Pass |
+| Validation of data | If data provided is in the wrong format then feedback will be given and user prompted to re-enter | Pass |
+| Menu | Menu is displayed and user can make a selection 1-6 | Pass |
+| Convert weight | Weight can be converted between kilograms and pounds | Pass |
+| Calculate BMI | BMI calculated and output displayed to tell user what their BMI is and which catagory they are in | Pass |
+| Set weight goals | User inputs target weight and date so that program can display how many pounds they need to lose over how many weeks | Pass |
+| Record details | Details pulled across to Google spreadsheet to record progress | Pass |
+| More info needed | If more infoirmation is needed to record data, user is redirected to option to resolve this | Pass |
+| Return to menu | After each option in the menu is completed, a message to press any key is displayed to return to the main menu | Pass |
+| Restart program | All obtained data cleared and the program is restarted from the begining | Pass |
+| Exit Program | Program closed | Pass |
+
+
