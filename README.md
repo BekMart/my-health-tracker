@@ -203,6 +203,14 @@ The program consists of the following features:
 
 - AI used to assist me in debugging elements in my code.
 
+### CI Python Linter
+
+- Python validator used to ensure that my code met the standards required
+
+### Figma
+
+- Used to create a process flow chart for my project
+
 [Back to Contents](#contents)
 
 <h1 id="testing">Testing</h1>
@@ -342,6 +350,25 @@ The site was created in Git pod and deployed to Heroku via GitHub. The steps to 
 - I then clicked 'View' to view the deployed version
 
 Visit the live website [here.](https://my-health-tracker-92b52c6743f2.herokuapp.com/)
+
+
+[Back to Contents](#contents)
+
+<h1 id="credits">Credits</h1>
+
+### Google Gemini
+
+- I used [Google Gemini AI](https://gemini.google.com/app/dcd808a4f3bdce46) to assist me in correcting and refining my code throughout
+
+### CI Tutor support
+
+- I had some assistance from the Code Institute tutor support when trying to fix my bug relating to how to make my variables global so I could update and access their values throughout the program
+
+### NHS website
+
+- I got information on how to calculate BMI [here](https://www.nhs.uk/health-assessment-tools/calculate-your-body-mass-index/calculate-bmi-for-adults) and information
+ relating to BMI and what the different catagories are [here](https://www.nhs.uk/health-assessment-tools/calculate-your-body-mass-index/calculate-bmi-for-adults/result)
+
 
 [flow-chart]: assets/process-flow-chart.png
 [spreadsheet]: assets/spreadsheet.png
