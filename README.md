@@ -92,6 +92,7 @@ This project is for educational purposes. The main aim is to build a functional 
 <h1 id="surface">Surface</h1>
 
 The layout is clear and consistant throughout the program to ensure a professional feel. 
+- I have used some basic CSS to style the background and features of the program to make it more aesthetically pleasing.
 - There is consistent spacing throughout the program and the menu is bordered by lines at the top and underneath. 
 - Clear and immediate feedback is given to the user to ensure that they know how to use the program and if anything is input incorrectly, they are informed why and prompted to correct.  
 
@@ -178,6 +179,10 @@ The program consists of the following features:
 ### Python
 
 - Python is the language used to create the entire program.
+
+### CSS
+
+- I used CSS to style the program.
 
 ### Git Pod
 
@@ -313,7 +318,7 @@ I tested the website on the following hardware devices:
 - The performance value sometimes varies.
 - The results were as follows when last checked:
 
-![Image of lighthouse results showing Performance at 85,Accessability at 94, Best Practice at 96, SEO at 89][lighthouse]
+![Image of lighthouse results showing Performance at 100,Accessability at 100, Best Practice at 100 and SEO at 100][lighthouse]
 
 <h2 id="validation">Code Validation</h2>
 
