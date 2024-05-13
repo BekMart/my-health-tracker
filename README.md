@@ -318,6 +318,30 @@ I used [CI Python Linter](https://pep8ci.herokuapp.com/) to validate my Python c
 
 ![This image shows the code passing through validator, shoowing no errors][validator]
 
+[Back to Contents](#contents)
+
+<h1 id="deployment">Deployment</h1>
+
+The site was created in Git pod and deployed to Heroku via GitHub. The steps to deploy were as follows:
+- Firstly I needed to create a list of dependancies that our project needs to run, as Heroku will need to install these also. 
+    - To obtain this list type 'pip3 freeze > requirements.txt' into the Git pod terminal and the list will appear in requirements.txt file
+- I created a Heroku account
+- I clicked 'Create new app' on the Heroku dashboard
+- I added the app name and selected my region, then clicked 'Create app'
+- On the app dashboard I went to "Settings"
+- In settings, I went to 'Config vars' and added the following:
+    - Key : CREDS / Value: (Copy and paste contents of CREDS.json from Git pod)
+    - Key : PORT / Value: 8000
+- Then to the 'Buildpacks' section within settings and clicked "Add build pack"
+- I added the python buildpack first followed by the nodejs buildpack (ensuring they were in the correct order)
+- I left settings by clicking the "Deploy" tab
+- I selected GitHub as the deployment method
+- I input the repository name to search for it and clicked 'Connect'
+- In the manual deploy section, I checked that it was set to 'main' and pressed 'Deploy branch'
+- Once the program had been deployed a message was displayed "Your app was successfully deployed" 
+- I then clicked 'View' to view the deployed version
+
+Visit the live website [here.](https://my-health-tracker-92b52c6743f2.herokuapp.com/)
 
 [flow-chart]: assets/process-flow-chart.png
 [spreadsheet]: assets/spreadsheet.png
