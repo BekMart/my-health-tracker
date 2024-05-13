@@ -28,7 +28,7 @@ def intro():
     Get name of user and introduce program
     """
     name = input("\nEnter your name: ").title()
-    print(f"Hello {name}. Welcome to your health tracker.")
+    print(f"\nHello {name}. Welcome to your health tracker.")
     print("Please enter your height and weight information to begin..")
     return name
 
@@ -61,7 +61,7 @@ def get_data():
 
     while True:
         # User to input either KG or LB for the unit of weight measurment
-        unit = input("Is that in kilograms or pounds? (KG/LB)\n").upper()
+        unit = input("\nIs that in kilograms or pounds? (KG/LB)").upper()
         if unit == "KG" or unit == "LB":
             validate(height, weight, unit)
         else:
@@ -151,7 +151,7 @@ def return_to_menu(height, weight, unit):
     which will return them to main menu
     """
     while True:
-        user_input = input("Press any key to return to menu: \n")
+        user_input = input("\nPress any key to return to menu: ")
         # Check if anything in input/or just enter pressed
         if user_input or user_input == "":
             # Menu displayed so user can make another selection
@@ -249,13 +249,13 @@ def set_weight_goals(height, weight, unit):
 
             # Message displays how much to lose (if surplus weight >= 0)
             if surplus_weight_lb >= 0:
-                print(f"You want to lose {round(surplus_weight_lb, 1)} LB")
+                print(f"\nYou want to lose {round(surplus_weight_lb, 1)} LB")
                 break
             else:
                 # Message displays how much to gain (if surplus weight < 0)
                 # Convert surplus weight to positive for weight gain
                 weight_to_gain = round(abs(surplus_weight_lb), 1)
-                print(f"You want to gain {weight_to_gain} LB")
+                print(f"\nYou want to gain {weight_to_gain} LB")
                 break
 
         # Print the specific error message if invalid value is entered
@@ -328,15 +328,26 @@ def get_weight_and_unit(prompt, unit_message):
     """
     while True:
         try:
+            # User will be asked what weight they want to get to
             goal_weight = float(input(prompt + " "))
-            goal_weight_unit = input(f"Is that in {unit_message}? \n").upper()
-            if goal_weight_unit not in ("KG", "LB"):
-                raise ValueError(f"{goal_weight_unit} is an invalid response.")
-                print("Please input either KG or LB")
-            return goal_weight, goal_weight_unit
-        except ValueError as e:
-            # Print the specific error message
-            print(e)
+            break
+        except ValueError:
+            # If this is not a number then it'll throw an error
+            print("You must input a number only")
+            # The user will be asked the same question again
+            continue
+
+    while True:
+        # User will be asked what unit of measurement
+        goal_weight_unit = input(f"\nIs that in {unit_message}? ").upper()
+        # If answer is not KG or LB then a error message will appear
+        if goal_weight_unit not in ("KG", "LB"):
+            print(f"{goal_weight_unit} is an invalid response.")
+            print("Please input either KG or LB")
+            continue  # The user will be asked the same question again
+        else:
+            break
+    return goal_weight, goal_weight_unit
 
 
 def update_health_spreadsheet(height, weight, unit):
@@ -354,7 +365,7 @@ def update_health_spreadsheet(height, weight, unit):
 
     # If user hasn't calculated BMI, they will be directed to that function
     if rounded_bmi == 0:
-        print("You need to calculate your BMI first..")
+        print("We need to calculate your BMI first..")
         calculate_bmi(height, weight, unit)
 
     # This add the BMI value to the client_data list
