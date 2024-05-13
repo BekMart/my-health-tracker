@@ -27,7 +27,14 @@ def intro():
     """
     Get name of user and introduce program
     """
+    # User is asked for their name
     name = input("\nEnter your name: ").title()
+    while not name:  # Loop continues if name is an empty string
+        # User is prompted to enter name again
+        print("Please enter your name to begin.")
+        name = input("\nEnter your name: ").title()
+
+    # Welcome message to user, introducing the program
     print(f"\nHello {name}. Welcome to your health tracker.")
     print("Please enter your height and weight information to begin..")
     return name
