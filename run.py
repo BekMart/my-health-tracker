@@ -48,23 +48,27 @@ def get_data():
         try:
             # User to enter figures for their height in CM.
             height = int(input("\nEnter your height in CM: "))
-            break
+            if height <= 0:
+                # Feedback is given if value entered is negative
+                print("Number must be a positive value")
+            else:
+                break
         except ValueError:
             # If height is not an integer then it'll throw an error
             print("You must input a whole number only")
-            # Continue the loop to prompt for height again
-            continue
 
     while True:
         try:
             # User to enter figures for their weight.
             weight = float(input("\nEnter your weight: "))
-            break
+            if weight <= 0:
+                # Feedback is given if value entered is negative
+                print("Number must be a positive value")
+            else:
+                break
         except ValueError:
             # If this is not a number then it'll throw an error
             print("You must input a number only")
-            # Continue the loop to prompt for weight again
-            continue
 
     while True:
         # User to input either KG or LB for the unit of weight measurment
@@ -337,12 +341,14 @@ def get_weight_and_unit(prompt, unit_message):
         try:
             # User will be asked what weight they want to get to
             goal_weight = float(input(prompt + " "))
-            break
+            if goal_weight <= 0:
+                # Feedback is given if value entered is negative
+                print("Number must be a positive value")
+            else:
+                break
         except ValueError:
             # If this is not a number then it'll throw an error
             print("You must input a number only")
-            # The user will be asked the same question again
-            continue
 
     while True:
         # User will be asked what unit of measurement
@@ -351,7 +357,6 @@ def get_weight_and_unit(prompt, unit_message):
         if goal_weight_unit not in ("KG", "LB"):
             print(f"{goal_weight_unit} is an invalid response.")
             print("Please input either KG or LB")
-            continue  # The user will be asked the same question again
         else:
             break
     return goal_weight, goal_weight_unit
