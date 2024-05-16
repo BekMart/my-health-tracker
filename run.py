@@ -78,7 +78,7 @@ def get_data():
         else:
             # If user enters anything else, they will be prompted to re-enter
             print(f"{unit} is an invalid response.")
-            print("Please input either KG for kilograms or LB for pounds.\n")
+            print("Please input either KG for kilograms or LB for pounds.")
     return height, weight, unit
 
 
