@@ -35,7 +35,7 @@ def intro():
         name = input("\nEnter your name: ").title()
 
     # Welcome message to user, introducing the program
-    print(f"\nHello {name}. Welcome to your health tracker.")
+    print(f"\nHello {name}. Welcome to your health tracker!")
     print("Please enter your height and weight information to begin..")
     return name
 
@@ -50,12 +50,12 @@ def get_data():
             height = int(input("\nEnter your height in CM: "))
             if height <= 0:
                 # Feedback is given if value entered is negative
-                print("Number must be a positive value")
+                print("Number must be a positive value.")
             else:
                 break
         except ValueError:
             # If height is not an integer then it'll throw an error
-            print("You must input a whole number only")
+            print("Please input a whole number only.")
 
     while True:
         try:
@@ -63,22 +63,22 @@ def get_data():
             weight = float(input("\nEnter your weight: "))
             if weight <= 0:
                 # Feedback is given if value entered is negative
-                print("Number must be a positive value")
+                print("Number must be a positive value.")
             else:
                 break
         except ValueError:
             # If this is not a number then it'll throw an error
-            print("You must input a number only")
+            print("Please input a number only.")
 
     while True:
-        # User to input either KG or LB for the unit of weight measurment
+        # User to input either KG or LB for the unit of weight measurement
         unit = input("\nIs that in kilograms or pounds? (KG/LB)").upper()
         if unit == "KG" or unit == "LB":
             validate(height, weight, unit)
         else:
             # If user enters anything else, they will be prompted to re-enter
             print(f"{unit} is an invalid response.")
-            print("Please input either KG for kilograms or LB for pounds\n")
+            print("Please input either KG for kilograms or LB for pounds.\n")
     return height, weight, unit
 
 
@@ -108,7 +108,7 @@ def display_main_menu(height, weight, unit):
     Menu for user to choose what they want to do with this program
     """
     # This makes the following variables global so they can be used in various
-    # functions and there values can be reset
+    # functions and their values can be reset
     global client_data
     if client_data is None:
         client_data = []
@@ -117,7 +117,6 @@ def display_main_menu(height, weight, unit):
     if rounded_bmi is None:
         rounded_bmi = 0
 
-    print("-" * 30)
     MENU_OPTIONS = {
         "1": "Convert weight (imperial/metric)",
         "2": "Calculate BMI",
@@ -127,7 +126,8 @@ def display_main_menu(height, weight, unit):
         "6": "Exit Program"
     }
 
-    # Print menu options as dictionary and promt user to make a selection
+    # Print menu options as dictionary and prompt user to make a selection
+    print("-" * 30)
     print("MENU OPTIONS:\n")
     for key, value in MENU_OPTIONS.items():
         print(f"{key}. {value}")
@@ -151,7 +151,7 @@ def display_main_menu(height, weight, unit):
         print("-" * 30)
         exit()
     else:
-        # If user enters anything thatr isn't 1-6
+        # If user enters anything that isn't 1-6
         print("Ooops that wasn't an option. Try again..")
         display_main_menu(height, weight, unit)
 
@@ -200,7 +200,7 @@ def calculate_bmi(height, weight, unit):
 
     # Convert weight to kg and round to 1 decimal place to make calculation
     if unit == "LB":
-        weight_kg = round(weight, 1) / 2.205
+        weight_kg = round(weight / 2.205, 1)
     elif unit == "KG":
         weight_kg = round(weight, 1)
 
@@ -214,19 +214,19 @@ def calculate_bmi(height, weight, unit):
     # Rounded to 1 decimal place
     rounded_bmi = round(bmi, 1)
 
-    print(f"\nYour BMI is {rounded_bmi}")
+    print(f"\nYour BMI is {rounded_bmi}.")
 
-    # The terminal will then print data relating to weight catagory
+    # The terminal will then print data relating to their weight category
     if rounded_bmi <= 18.4:
-        print("According to the NHS website you are considered underweight")
+        print("According to the NHS website you are considered underweight.")
     elif rounded_bmi <= 24.9:
-        print("According to the NHS website you are considered healthy")
+        print("According to the NHS website you are considered healthy.")
     elif rounded_bmi <= 29.9:
-        print("According to the NHS website you are considered overweight")
+        print("According to the NHS website you are considered overweight.")
     elif rounded_bmi > 30:
-        print("According to the NHS website you are considered obese")
+        print("According to the NHS website you are considered obese.")
     else:
-        print("Sorry we do not recognise your response")
+        print("Sorry we do not recognise your response.")
     print("-" * 30)
 
     return_to_menu(height, weight, unit)
@@ -260,20 +260,20 @@ def set_weight_goals(height, weight, unit):
 
             # Message displays how much to lose (if surplus weight >= 0)
             if surplus_weight_lb >= 0:
-                print(f"\nYou want to lose {round(surplus_weight_lb, 1)} LB")
+                print(f"\nYou want to lose {round(surplus_weight_lb, 1)} LB.")
                 break
             else:
                 # Message displays how much to gain (if surplus weight < 0)
                 # Convert surplus weight to positive for weight gain
                 weight_to_gain = round(abs(surplus_weight_lb), 1)
-                print(f"\nYou want to gain {weight_to_gain} LB")
+                print(f"\nYou want to gain {weight_to_gain} LB.")
                 break
 
         # Print the specific error message if invalid value is entered
         except ValueError as e:
             print(e)
 
-    # Use datetime to calculate todays date
+    # Use datetime to calculate today's date
     today = datetime.now().date()
     # Convert into string to update the spreadsheet
     date_str = today.strftime("%Y-%m-%d")
@@ -319,7 +319,7 @@ def set_weight_goals(height, weight, unit):
         target_date_str, rounded_goal, time_weeks
         ]
 
-    # Display results to user in a readable sentance
+    # Display results to user in a readable sentence
     print(f"\nTo reach {goal_weight}{goal_weight_unit} by {target_date},")
     if surplus_weight_lb >= 0:
         print(f"lose {rounded_goal}LB each week for {time_weeks} weeks.")
@@ -343,12 +343,12 @@ def get_weight_and_unit(prompt, unit_message):
             goal_weight = float(input(prompt + " "))
             if goal_weight <= 0:
                 # Feedback is given if value entered is negative
-                print("Number must be a positive value")
+                print("Number must be a positive value.")
             else:
                 break
         except ValueError:
             # If this is not a number then it'll throw an error
-            print("You must input a number only")
+            print("Please input a number only.")
 
     while True:
         # User will be asked what unit of measurement
@@ -380,7 +380,7 @@ def update_health_spreadsheet(height, weight, unit):
         print("We need to calculate your BMI first..")
         calculate_bmi(height, weight, unit)
 
-    # This add the BMI value to the client_data list
+    # This adds the BMI value to the client_data list
     client_data.append(rounded_bmi)
 
     print("Updating spreadsheet..")
@@ -417,7 +417,7 @@ def reset_program(height, weight, unit):
     intro()
     height, weight, unit = get_data()
 
-    # Retrun reset values of the following variables
+    # Return reset values of the following variables
     return height, weight, unit, client_data, rounded_bmi
 
 
