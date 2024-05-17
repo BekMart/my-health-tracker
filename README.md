@@ -407,7 +407,7 @@ Visit the live website [here.](https://my-health-tracker-92b52c6743f2.herokuapp.
 [flow-chart]: assets/process-flow-chart.png 
 [spreadsheet]: assets/spreadsheet.png 
 [lighthouse]: assets/lighthouse.png 
-[validator]: assets/validator.png 
+[validator]: assets/validator.png
 [welcome]: assets/welcome.png 
 [get-data]: assets/get-data.png 
 [validate]: assets/validate-n.png 
