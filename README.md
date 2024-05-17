@@ -385,6 +385,10 @@ Visit the live website [here.](https://my-health-tracker-92b52c6743f2.herokuapp.
 
 <h1 id="credits">Credits</h1> 
 
+### Code Institute
+
+- Provided the deployment terminal.
+
 ### Google Gemini 
 
 - I used [Google Gemini AI](https://gemini.google.com/app/dcd808a4f3bdce46) to assist me in correcting and refining my code throughout.

@@ -1,9 +1,13 @@
+# Import datetime library in order to record and calculate dates
 from datetime import datetime, timedelta, date
+# Import math library to make calculations throughout
 import math
 
+# Libraries needed to link program to Google sheets
 import gspread
 from google.oauth2.service_account import Credentials
 
+# The below links this program to a Google spreadsheet to record data
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
