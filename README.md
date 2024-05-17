@@ -236,11 +236,11 @@ The program consists of the following features:
 
 ### CI Python Linter 
 
-- Python validator used to ensure that my code met the standards required 
+- Python validator used to ensure that my code met the standards required.
 
 ### Figma 
 
-- Used to create a process flow chart for my project 
+- Used to create a process flow chart for my project. 
 
 [Back to Contents](#contents) 
 
@@ -329,7 +329,7 @@ I tested the website on the following hardware devices:
     - I separated the function into three while loops so that each input section is dealt with separately and if the input isn't it the correct format, feedback will be given to the user and they will be returned to the question that they were on, rather than starting at the beginning of the function each time.  
 
 - When the user chooses the option to set weight goals, a variable named client_data is created. This variable holds all of the data which we want to transfer to the google spreadsheet in order to record and track their health information. I was finding that the values that were obtained from this function were not updating in the variable globally.  
-    - This issue was resolved by making client_data a global variable, which I declared in each function that it was associated with and returned the value of it when I need its value to be updated. (In set_weight_goals and rest_program functions) 
+    - This issue was resolved by making client_data a global variable, which I declared in each function that it was associated with and returned the value of it when I need its value to be updated. (In set_weight_goals and rest_program functions).
 
 ### Unsolved bugs 
 
@@ -362,22 +362,22 @@ I used [CI Python Linter](https://pep8ci.herokuapp.com/) to validate my Python c
 
 The site was created in Git pod and deployed to Heroku via GitHub. The steps to deploy were as follows: 
 - Firstly, I needed to create a list of dependencies that our project needs to run, as Heroku will need to install these also.  
-    - To obtain this list type 'pip3 freeze > requirements.txt' into the Git pod terminal and the list will appear in requirements.txt file 
-- I created a Heroku account
-- I clicked 'Create new app' on the Heroku dashboard 
-    - I added the app name and selected my region, then clicked 'Create app' 
-- On the app dashboard I went to "Settings"
+    - To obtain this list type 'pip3 freeze > requirements.txt' into the Git pod terminal and the list will appear in requirements.txt file.
+- I created a Heroku account.
+- I clicked 'Create new app' on the Heroku dashboard.
+    - I added the app name and selected my region, then clicked 'Create app'. 
+- On the app dashboard I went to "Settings".
     - In settings, I went to 'Config vars' and added the following: 
-        - Key: CREDS / Value: (Copy and paste contents of CREDS.json from Git pod)
-        - Key: PORT / Value: 8000
-    - Then to the 'Buildpacks' section within settings and clicked "Add build pack" 
-        - I added the python buildpack first followed by the nodejs buildpack (ensuring they were in the correct order)
-- I left settings by clicking the "Deploy" tab
-    - I selected GitHub as the deployment method 
-    - I input the repository name to search for it and clicked 'Connect'
-    - In the manual deploy section, I checked that it was set to 'main' and pressed 'Deploy branch' 
-    - Once the program had been deployed a message was displayed "Your app was successfully deployed"  
-    - I then clicked 'View' to view the deployed version 
+        - Key: CREDS / Value: (Copy and paste contents of CREDS.json from Git pod).
+        - Key: PORT / Value: 8000.
+    - Then to the 'Buildpacks' section within settings and clicked "Add build pack".
+        - I added the python buildpack first followed by the nodejs buildpack (ensuring they were in the correct order).
+- I left settings by clicking the "Deploy" tab.
+    - I selected GitHub as the deployment method.
+    - I input the repository name to search for it and clicked 'Connect'.
+    - In the manual deploy section, I checked that it was set to 'main' and pressed 'Deploy branch'.
+    - Once the program had been deployed a message was displayed "Your app was successfully deployed".  
+    - I then clicked 'View' to view the deployed version. 
 
 Visit the live website [here.](https://my-health-tracker-92b52c6743f2.herokuapp.com/) 
 
